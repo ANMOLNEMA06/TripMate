@@ -87,9 +87,9 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 // 404 route
-app.all("*", (req, res, next) => {
-    next(new expressError(404, "Page Not Found"));
-});
+// app.all("*", (req, res, next) => {
+//     next(new expressError(404, "Page Not Found"));
+// });
 
 // Error handler
 app.use((err, req, res, next) => {
@@ -100,5 +100,5 @@ app.use((err, req, res, next) => {
 // Listen on Render-provided port or 8080
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(` Server running on port ${PORT}`);
 });
