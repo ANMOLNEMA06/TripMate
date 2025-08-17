@@ -23,13 +23,13 @@ const User = require("./models/user.js");
 // ----------- MongoDB Atlas Connection -----------
 const dbUrl = process.env.ATLASDB_URL;
 if (!dbUrl) {
-    console.error("❌ ATLASDB_URL not set in environment variables!");
+    console.error(" ATLASDB_URL not set in environment variables!");
     process.exit(1);
 }
 
 mongoose.connect(dbUrl)
-    .then(() => console.log("✅ Connected to MongoDB Atlas"))
-    .catch(err => console.log("❌ DB Connection Error:", err));
+    .then(() => console.log(" Connected to MongoDB Atlas"))
+    .catch(err => console.log(" DB Connection Error:", err));
 
 // ----------- EJS Setup -----------
 app.engine("ejs", ejsMate);
@@ -83,6 +83,12 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+
+
+
+app.get("/", (req, res) => {
+    res.redirect("/listings");   // direct listings page khulega
+});
 
 // ----------- 404 Handler -----------
 // app.all("*", (req, res, next) => {
