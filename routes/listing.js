@@ -12,7 +12,7 @@ router.route("/")
     .get(wrapAsync(listingController.index))
     .post(
         isLoggedIn,
-        upload.single('image'), // ✅ simplified
+        upload.single('listing[image]'), // ✅ simplified
         validateListing,
         wrapAsync(listingController.createListing)
     );
@@ -26,7 +26,7 @@ router.route("/:id")
     .put(
         isLoggedIn,
         isOwner,
-        upload.single('image'), // ✅ simplified
+        upload.single('listing[image]'), // ✅ simplified
         validateListing,
         wrapAsync(listingController.updateListing) // ✅ correct controller
     )
