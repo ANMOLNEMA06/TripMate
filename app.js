@@ -95,6 +95,14 @@ app.get("/", (req, res) => {
 //     next(new expressError(404, "Page Not Found"));
 // });
 
+
+
+
+
+
+
+
+
 // ----------- Error Handler -----------
 app.use((err, req, res, next) => {
     const { statusCode = 500, message = "Something went wrong!" } = err;
